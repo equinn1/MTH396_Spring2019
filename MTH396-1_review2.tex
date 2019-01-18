@@ -1,0 +1,31 @@
+\documentclass{amsart}
+\begin{document}
+\section{Review Exercise 2}
+Recall that the cumulative distribution function (CDF) $F(x)$ of a random variable $X$ with density function (PDF) $f(x)$ is defined as:
+\[
+F(x) = P(X\leq x) = \int_{-\infty}^xf(u)\;du
+\] 
+In Calculus I, we talked about a theorem called the "fundamental theorem of calculus" which stated, among other things, that if
+\[
+g(x) = \int_a^xf(u)\;du\quad\mbox{then}\quad \frac{d}{dx}g(x) = f(x) 
+\]
+In the context of density functions and cumulative distribution functions, this means that
+\[
+\frac{d}{dx}F(x) = f(x)
+\]
+that is to say, if we know the CDF, we can find the PDF by differentiating it.  This led to a technique for determining the density function of a trandformed random variable, provided we could write down what the CDF is.
+\par\vspace{0.5 cm}
+On the real line, the usual measure of the distance to the origin is $d(x) = |x|$.  Suppose the random variable $X$ has a standard Gaussian distribution ($\mu=0, \sigma=1)$, that is, has density function
+\[
+f(x) = \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{x^2}{2}\right)
+\]
+\par\vspace{0.5 cm}
+Find the expected value of the distance from the mean, measured as $|x|$.
+\par\vspace{0.5 cm}
+Hint:  Think of this as a transform with $u(x) = |x|$
+\begin{itemize}
+\item Begin by writing $F(u) = P(U \leq u) = P(|X| \leq x)$ as an integral of the density function
+\item Use the fundamental theorem of calculus to differentiate $F(|x|)$ with respect to $x$, which will give the density function of $u=|x|$
+\item Find $E(u)$ using the density function of $u$ and the defnintion of expected value.
+\end{itemize}
+\end{document}
