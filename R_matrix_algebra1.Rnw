@@ -1,0 +1,84 @@
+\documentclass{article}
+
+\begin{document}
+
+Suppose $X=(X_1,X_2,X_3)$ is a random vector of length 3 with mean vector $\mu$ and variance-covariance matrix $V$ given by:
+\[
+\mu = \left[\begin{array}{r}1\\-3\\2\end{array}\right] \quad V = \left[\begin{array}{ccc}1&4&7\\2&5&8\\3&6&9\end{array}\right]
+\]
+<<>>=
+mu = matrix(c(1,-3,2),nrow=3,ncol=1)   #variance-covariance matrix of X
+mu
+
+v = matrix(c(4,2,3,4,8,6,7,8,11),nrow=3,ncol=3)
+v
+@
+
+Now consider the linear combination
+\[
+Y = X_1+2X_2-4X_3
+\]
+If we define vector of coefficients $t$ for the elements of $X$ as
+\[
+t = \left[\begin{array}{r}1\\2\\-4\end{array}\right]
+\]
+we can write the formula for $Y$ in matrix notation as:
+\[
+Y = t'X
+\]
+<<>>=
+t = matrix(c(1,3,2),nrow=3,ncol=1)     #t - vector of coefficients or weights for the components of X
+t
+
+t(t)                                   #transpose of t 
+@
+
+From a previous theorem,
+\[
+E(Y) = t'E(X) = t'\mu\quad\mbox{and}\quad V(Y) = t'Vt
+\]
+
+
+<<>>=
+t(t)%*%mu                #E(y)
+@
+
+The variance of $Y$ is:
+
+<<>>=
+t(t)%*%v%*%t     #variance of Y
+@
+
+These formulas work if $t$ is a matrix, which means $Y$ is a vector.  In this case, $t'Vt$ still represents the variance of $t'X$, but it's a matrix instead of a scalar.
+
+Exercise:
+
+With $X$ defined above, find the expected value and variance-covariance matrix of:
+\[
+Y = \left[\begin{array}{r}2X_1+X_2-X_3\\-X_1+3X_2+2X_3\end{array}\right]
+\]
+
+Hint:  To find the matrix $t$ for which $t'X=Y$, let
+\[
+t = \left[\begin{array}{rr}t_{11}&t_{12}\\t_{21}&t_{22}\\t_{31}&t_{32}\end{array}\right]
+\]
+Try to fill in the missing terms in the following equation:
+\[
+t'X = \left[\begin{array}{rrr}t_{11}&t_{21}&t_{31}\\t_{12}&t_{22}&t_{32}\end{array}\right]\left[\begin{array}{r}X_1\\X_2\\X_3\end{array}\right] = \left[\begin{array}{r}2X_1+X_2-X_3\\-X_1+3X_2+2X_3\end{array}\right]
+\]
+
+<<>>=
+## Define t
+@
+
+
+<<>>=
+## Find the expected value t'mu
+@
+
+
+<<>>=
+## Find the variance-covariance matrix t'Vt
+@
+
+\end{document}
